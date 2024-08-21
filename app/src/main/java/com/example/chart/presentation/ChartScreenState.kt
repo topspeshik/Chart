@@ -8,11 +8,11 @@ sealed class ChartScreenState {
 
     data class Content(
         val bars: List<Bar>,
-//        val visibleBarsCount: Int = 100,
-//        val terminalWidth: Float = 0f,
-//        val scrolledBy: Float = 0f,
-//        val barWidth: Float = 0f,
-//        val visibleBars: List<Bar> = bars.subList(0, visibleBarsCount),
+        val visibleBarsCount: Int = 100,
+        val terminalWidth: Float = 0f,
+        val scrolledBy: Float = 0f,
+        val barWidth: Float = 0f,
+        val visibleBars: List<Bar> = bars.subList(0, visibleBarsCount),
 
     ) : ChartScreenState() {
 //        val barWidth: Float

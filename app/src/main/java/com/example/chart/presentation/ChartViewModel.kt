@@ -38,43 +38,41 @@ class ChartViewModel @Inject constructor(
     }
 
 
-//    fun onScrolledChanged(bars:Int, scroll: Float){
-//        _state.update {
-//            val contentState = it as ChartScreenState.Content
-//            val newBarWidth = contentState.terminalWidth / bars
-//
-//            val startIndex = (scroll / newBarWidth).roundToInt().coerceAtLeast(0)
-//            val endIndex = (startIndex + bars).coerceAtMost(contentState.bars.size)
-//
-//            val newVisibleBars = contentState.bars.subList(startIndex, endIndex)
-//
-//            contentState.copy(
-//                visibleBarsCount = bars,
-//                scrolledBy = scroll,
-//                visibleBars = newVisibleBars,
-//                barWidth = newBarWidth
-//            )
-//        }
-//    }
-//
-//
-//    fun onTerminalWidthChanged(width : Float){
-//        _state.update {
-//            val contentState = it as ChartScreenState.Content
-//
-//
-//            val newBarWidth = width / contentState.visibleBarsCount
-//
-//            val startIndex = (contentState.scrolledBy / newBarWidth).roundToInt().coerceAtLeast(0)
-//            val endIndex = (startIndex + contentState.visibleBarsCount).coerceAtMost(contentState.bars.size)
-//
-//            val newVisibleBars = contentState.bars.subList(startIndex, endIndex)
-//
-//            contentState.copy(
-//                terminalWidth = width,
-//                barWidth = newBarWidth,
-//                visibleBars = newVisibleBars
-//            )
-//        }
-//    }
+    fun onScrolledChanged(bars:Int, scroll: Float){
+        _state.update {
+            val contentState = it as ChartScreenState.Content
+            val newBarWidth = contentState.terminalWidth / bars
+
+            val startIndex = (scroll / newBarWidth).roundToInt().coerceAtLeast(0)
+            val endIndex = (startIndex + bars).coerceAtMost(contentState.bars.size)
+
+            val newVisibleBars = contentState.bars.subList(startIndex, endIndex)
+
+            contentState.copy(
+                visibleBarsCount = bars,
+                scrolledBy = scroll,
+                visibleBars = newVisibleBars,
+                barWidth = newBarWidth
+            )
+        }
+    }
+
+
+    fun onTerminalWidthChanged(width : Float){
+        _state.update {
+            val contentState = it as ChartScreenState.Content
+            val newBarWidth = width / contentState.visibleBarsCount
+
+            val startIndex = (contentState.scrolledBy / newBarWidth).roundToInt().coerceAtLeast(0)
+            val endIndex = (startIndex + contentState.visibleBarsCount).coerceAtMost(contentState.bars.size)
+
+            val newVisibleBars = contentState.bars.subList(startIndex, endIndex)
+
+            contentState.copy(
+                terminalWidth = width,
+                barWidth = newBarWidth,
+                visibleBars = newVisibleBars
+            )
+        }
+    }
 }
