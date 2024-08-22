@@ -22,18 +22,22 @@ class ChartViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     private val exceptionHandler = CoroutineExceptionHandler{ _,throwable->
-        Log.d("ChartViewModel", throwable.toString())
+        _state.value = lastState
 
     }
+
+    private var lastState: ChartScreenState = ChartScreenState.Initial
 
     init {
         loadBarList()
     }
 
-    private fun loadBarList(){
+    fun loadBarList(timeFrame: TimeFrame = TimeFrame.HOUR){
+        lastState = _state.value
+        _state.value = ChartScreenState.Loading
         viewModelScope.launch(exceptionHandler) {
-           val barList = barRepository.loadBar()
-            _state.value = ChartScreenState.Content(bars = barList)
+           val barList = barRepository.loadBars(timeFrame.value )
+            _state.value = ChartScreenState.Content(bars = barList, timeFrame = timeFrame)
         }
     }
 

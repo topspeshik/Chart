@@ -3,5 +3,5 @@ package com.example.chart
 import com.example.chart.data.Bar
 
 interface BarRepository {
-    suspend fun loadBar(): List<Bar>
+    suspend fun loadBars(timeframe: String): List<Bar>
 }

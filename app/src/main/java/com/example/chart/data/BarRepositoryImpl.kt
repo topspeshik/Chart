@@ -6,7 +6,7 @@ import javax.inject.Inject
 class BarRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ): BarRepository {
-    override suspend fun loadBar(): List<Bar> {
-       return apiService.loadBar().barList
+    override suspend fun loadBars(timeframe: String): List<Bar> {
+       return apiService.loadBars(timeframe).barList
     }
 }
