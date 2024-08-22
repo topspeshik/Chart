@@ -1,1 +1,1 @@
-![alt text](img/weather.jpg)
+![alt text](img/chart.png)
